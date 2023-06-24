@@ -9,6 +9,7 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi import Request
 from fastapi import Response
+from fastapi import APIRouter
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import FileResponse
@@ -16,13 +17,17 @@ from starlette.responses import PlainTextResponse
 
 from ice.routes import traces
 from ice.trace import traces_dir
+from ice.settings import settings
 
 logger = logging.getLogger(__name__)
 
 dist_dir = Path(__file__).parent / "ui"
 
 
-app = FastAPI()
+# add setings.OUGHT_ICE_API_PREFIX as a prefix to all routes
+app = FastAPI(
+    root_path=settings.OUGHT_ICE_API_PREFIX,
+)
 
 
 # Add cache-control: no-transform header to all responses
