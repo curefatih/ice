@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function TraceListPage() {
   const [traces, setTraces] = useState<string[]>([]);
   useEffect(() => {
-    fetch("/api/traces/")
+    fetch(`${localStorage.getItem("prefix") + "/"}api/traces/`) // change to `api/traces/
       .then(res => res.json())
       .then(setTraces);
   }, []);

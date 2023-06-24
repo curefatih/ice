@@ -144,12 +144,11 @@ const applyUpdates = (calls: Calls, updates: Record<string, unknown>) =>
 
 const urlPrefix = (traceId: string) => {
   // get prefix query param from url
-  const urlParams = new URLSearchParams(window.location.search);
-  const prefix = urlParams.get("prefix");
+  const prefix = localStorage.getItem("prefix") || "";
   const base = recipes[traceId] ? "https://oughtinc.github.io/static" : "/api";
   if (prefix) {
     console.log(`using prefix ${prefix} for trace ${traceId}`);
-    return `${base}/${prefix}/traces/${traceId}`;
+    return `${base}${prefix ? `/${prefix}` : ""}/traces/${traceId}`;
   }
 
   return `${base}/traces/${traceId}`;
