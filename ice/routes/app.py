@@ -73,7 +73,7 @@ async def stop():
 async def catch_all(path: str):
     # Never serve index.html for API requests or assets
     if re.match(r"^(?:api|assets)(?:/.*)?$", path):
-        return PlainTextResponse("404 File Not Found", status_code=404)
+        return PlainTextResponse(f"404 File Not Found in {path}", status_code=404)
 
     index_path = dist_dir / "index.html"
     if not index_path.exists():
