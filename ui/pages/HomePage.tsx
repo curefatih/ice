@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import type { Recipe } from "/helpers/recipes";
 import { elicitRecipes, primerRecipes } from "/helpers/recipes";
 import React, { useEffect } from "react";
@@ -20,12 +20,10 @@ function RecipeGroup({ title, recipes, children }: RecipeGroupProps) {
           return (
             <li key={traceId} className="p-2 pl-0">
               <Link to={`/traces/${traceId}`}>
-                <a className="flex items-center">
-                  <div className="flex-1">
-                    <h3 className="text-l font-semibold">{title}</h3>
-                    <p className="text-gray-600">{description}</p>
-                  </div>
-                </a>
+                <div className="flex-1">
+                  <h3 className="text-l font-semibold">{title}</h3>
+                  <p className="text-gray-600">{description}</p>
+                </div>
               </Link>
             </li>
           );
