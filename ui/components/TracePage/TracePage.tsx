@@ -148,7 +148,7 @@ const urlPrefix = (traceId: string) => {
   const base = recipes[traceId] ? "https://oughtinc.github.io/static" : "/api";
   if (prefix) {
     console.log(`using prefix ${prefix} for trace ${traceId}`);
-    return `/${prefix}/traces/${traceId}`;
+    return `${prefix}/traces/${traceId}`;
   }
 
   return `${base}/traces/${traceId}`;
