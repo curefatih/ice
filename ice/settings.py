@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     GS_QUOTE_FOUND_THRESHOLD: float = 0.75
     OUGHT_ICE_HOST: str = "0.0.0.0"
     OUGHT_ICE_PORT: int = 8935
-    OUGHT_ICE_API_PREFIX: str = "/proxy/" + OUGHT_ICE_PORT
+    OUGHT_ICE_API_PREFIX: str = f"/proxy/{OUGHT_ICE_PORT}"
     OUGHT_ICE_AUTO_SERVER: bool = True
     OUGHT_ICE_AUTO_BROWSER: bool = True
     PAPER_DIR: Path = Path(__file__).parent.parent / "papers"
