@@ -72,7 +72,8 @@ async def stop():
 @app.get("/{path:path}")
 async def catch_all(path: str):
     # Never serve index.html for API requests or assets
-    if re.match(r"^(?:api|assets)(?:/.*)?$", path):
+    # use pattern like <things>api or assets<things> to avoid this
+    if re.match(r".*(api|assets).*", path):
         return PlainTextResponse(f"404 File Not Found in {path}", status_code=404)
 
     index_path = dist_dir / "index.html"
